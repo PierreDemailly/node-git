@@ -1,5 +1,5 @@
 {
-  "name": "git-commander",
+  "name": "node-git",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PierreDemailly/git-commander.git"
+    "url": "git+https://github.com/PierreDemailly/node-git.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PierreDemailly/git-commander/issues"
+    "url": "https://github.com/PierreDemailly/node-git/issues"
   },
-  "homepage": "https://github.com/PierreDemailly/git-commander#readme",
+  "homepage": "https://github.com/PierreDemailly/node-git#readme",
   "type": "module"
 }
