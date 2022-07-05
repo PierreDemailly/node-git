@@ -1,5 +1,5 @@
-import { logs } from './git-log.js';
+import { logs } from "./git-log.js";
 
 export const NodeGit = Object.freeze({
-  logs,
+  logs
 });

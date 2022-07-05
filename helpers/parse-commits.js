@@ -9,7 +9,7 @@
  * }[]} All commits in the log.
  */
 export function parseCommits(text) {
-  const rawCommits = text.match(/commit.*?(?=commit\ |$)/gs);
+  const rawCommits = text.match(/commit.*?(?=commit |$)/gs);
   const commits = [];
 
   for (const rawCommit of rawCommits) {
@@ -23,31 +23,31 @@ export function parseCommits(text) {
           return null;
         }
 
-        return data.replace(/^\n|\n+$|\t| + /g, '');
+        return data.replace(/^\n|\n+$|\t| + /g, "");
       }
     );
 
     let merged = null;
     if (rawMerged) {
-      const mergedData = rawMerged.split(' ');
+      const mergedData = rawMerged.split(" ");
 
       merged = {
         from: mergedData[0],
-        to: mergedData[1],
+        to: mergedData[1]
       };
     }
 
-    const authorData = rawAuthor.split(' ');
+    const authorData = rawAuthor.split(" ");
 
     commits.push({
       commit,
       merged,
       author: {
         name: authorData[0],
-        email: authorData[1],
+        email: authorData[1]
       },
       date,
-      message: msg.split(/\n\n/),
+      message: msg.split(/\n\n/)
     });
   }
 

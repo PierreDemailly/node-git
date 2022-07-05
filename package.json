@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
     "url": "https://github.com/PierreDemailly/node-git/issues"
   },
   "homepage": "https://github.com/PierreDemailly/node-git#readme",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@nodesecure/eslint-config": "^1.4.1"
+  }
 }
