@@ -1,13 +1,15 @@
-import {exec} from 'node:child_process';
+import { exec } from "node:child_process";
 
 export function commander(command, options = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     exec(command, (_, stdout, stderr) => {
-      if (options.split) {
-        stdout = stdout.split('\n');
+      let result = stdout || stderr;
+
+      if (options.split && stdout) {
+        result = result.split("\n");
       }
 
-      resolve(stdout || stderr);
+      resolve(result);
     });
   });
 }
