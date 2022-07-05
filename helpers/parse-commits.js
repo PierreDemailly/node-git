@@ -29,7 +29,7 @@ export function $parseCommits(text) {
   const rawCommits = text.match(/commit.*?(?=commit\ |$)/gs);
   const commits = [];
 
-  for(const rawCommit of rawCommits) {
+  for (const rawCommit of rawCommits) {
     const commitData = rawCommit.match(/commit (.*?)(?:Merge: (.*?))?Author: (.*?)Date: (.*?)\n(.*?)$/s)
 
     const [, commit, rawMerged, rawAuthor, date, msg] = commitData.map(data => {
@@ -43,8 +43,8 @@ export function $parseCommits(text) {
     let merged = null;
     if (rawMerged) {
       const mergedData = rawMerged.split(" ");
-      
-      merged =  {
+
+      merged = {
         from: mergedData[0],
         to: mergedData[1]
       }
@@ -55,7 +55,7 @@ export function $parseCommits(text) {
     commits.push({
       commit,
       merged,
-      author : {
+      author: {
         name: authorData[0],
         email: authorData[1]
       },

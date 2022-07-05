@@ -1,4 +1,4 @@
-import {exec} from 'node:child_process';
+import { exec } from 'node:child_process';
 
 export function commander(command, options = {}) {
   return new Promise(resolve => {
