@@ -20,6 +20,7 @@
   "homepage": "https://github.com/PierreDemailly/node-git#readme",
   "type": "module",
   "devDependencies": {
-    "@nodesecure/eslint-config": "^1.4.1"
+    "@nodesecure/eslint-config": "^1.4.1",
+    "eslint": "^8.19.0"
   }
 }
