@@ -29,12 +29,13 @@ export async function commit(message) {
   }).join(" ");
 
   if (!stringifiedMessages) {
-    throw new Error('No message given');
+    throw new Error("No message given");
   }
 
   try {
     await commander(`git commit ${stringifiedMessages}`);
-  } catch (error) {
+  }
+  catch (error) {
     throw error;
   }
 }
