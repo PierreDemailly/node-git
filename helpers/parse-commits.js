@@ -9,7 +9,7 @@
  * }[]} All commits in the log.
  */
 export function parseCommits(text) {
-  const rawCommits = text.match(/commit.*?(?=commit |$)/gs);
+  const rawCommits = text.match(/commit.*?(?=\ncommit |$)/gs);
   const commits = [];
 
   for (const rawCommit of rawCommits) {
