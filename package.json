@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tap",
+    "test": "tap --no-coverage ./test/**.test.js",
     "lint": "eslint --fix ."
   },
   "repository": {
