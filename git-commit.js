@@ -22,7 +22,7 @@ export async function commit(message) {
     }
 
     if (typeof msg === "string") {
-      return `-m ${msg}`;
+      return `-m "${msg}"`;
     }
 
     throw new TypeError(`Expected string or string[], got ${typeof msg}`);
