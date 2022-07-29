@@ -17,7 +17,7 @@ Date:   Tue Jul 12 14:10:03 2022 +0200
     feat(git-api): add git-commit handler (#5)
 
 `;
-tap.equal(parseCommits(rawCommits).length, 2, "Should have 2 commits");
+tap.equal(parseCommits(rawCommits).length, 2, "should have 2 commits");
 tap.same(parseCommits(rawCommits), [{
   commit: "95c72462f57323785ddce8355e8424f58a03f1d6",
   merged: null,
