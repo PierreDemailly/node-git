@@ -3,6 +3,7 @@ import { changesCount, stagedCount } from "./git-changes.js";
 import { commit } from "./git-commit.js";
 import { logs } from "./git-log.js";
 import { push } from "./git-push.js";
+import { restoreFile } from "./git-restore.js";
 
 export {
   add,
@@ -14,5 +15,6 @@ export {
   indexFileOrDirectory,
   logs,
   push,
-  stagedCount
+  stagedCount,
+  restoreFile
 };
