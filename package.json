@@ -6,6 +6,10 @@
   "scripts": {
     "test": "tap --no-coverage ./test/**.test.js",
     "test:c8": "c8 npm run test",
+    "test:e2e": "tap --no-coverage ./test/**.e2e-test.js",
+    "test:e2e:c8": "c8 npm run test:e2e",
+    "test:all": "npm run test && npm run test:e2e",
+    "test:all:c8": "c8 npm run test:all",
     "lint": "eslint --fix ."
   },
   "repository": {
