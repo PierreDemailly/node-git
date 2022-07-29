@@ -1,7 +1,7 @@
 import { changesCount, stagedCount } from "../git-changes.js";
 import { unlink, writeFile } from "node:fs/promises";
 import { indexFileOrDirectory } from "../git-add.js";
-import { restaureFile } from "../git-restore.js";
+import { restoreFile } from "../git-restore.js";
 import tap from "tap";
 
 tap.test("git add tests", async(t) => {
@@ -23,7 +23,7 @@ tap.test("git add tests", async(t) => {
   t.equal(sCountAfterIndexedFile, sCount + 1, "should have changes diff with the indexed file");
 
   await unlink("dummy.txt");
-  await restaureFile("dummy.txt");
+  await restoreFile("dummy.txt");
 
   tap.end();
 });
