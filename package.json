@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tap",
+    "test": "tap --no-coverage ./test/**.test.js",
+    "test:c8": "c8 npm run test",
     "lint": "eslint --fix ."
   },
   "repository": {
