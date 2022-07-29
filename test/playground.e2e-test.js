@@ -51,7 +51,7 @@ tap.test("e2e tests", async(t) => {
 
   tap.equal(commits[0].message.length, 2, "should have 2 commit messages");
   tap.equal(commits[0].message[0], "1 Commit message", "first message should be the same as the one provided.");
-  tap.equal(commits[0].message[0], "2 Commit message", "second message should be the same as the one provided.");
+  tap.equal(commits[0].message[1], "2 Commit message", "second message should be the same as the one provided.");
 
   // revert the commit
   await commander("git reset HEAD~1");
