@@ -5,7 +5,7 @@
  * @returns
  */
 export function getRawLength(rawText) {
-  if ((typeof rawText !== "string")) {
+  if (typeof rawText !== "string") {
     throw new TypeError(`string param required. ${typeof rawText} given.`);
   }
 
