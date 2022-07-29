@@ -1,6 +1,7 @@
+import { parseCommits } from "../helpers/parse-commits.js";
+
 import tap from "tap";
 
-import { parseCommits } from "../helpers/parse-commits.js";
 
 const rawCommits = `
 commit 95c72462f57323785ddce8355e8424f58a03f1d6
