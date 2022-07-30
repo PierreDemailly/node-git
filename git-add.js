@@ -42,12 +42,18 @@ export async function indexFilesOrDirectories(paths) {
 export async function indexAll(options) {
   if (options.withoutNewFiles) {
     await add("-u");
+
+    return;
   }
+
+  await add("--all");
 }
 
 export async function indexAllCurrentDirectory(options) {
   if (options.ignoreRemovals) {
     await add(". --ignore-removal");
+
+    return;
   }
 
   await add(".");
