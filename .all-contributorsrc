@@ -11,12 +11,13 @@
   "commitConvention": "eslint",
   "contributors": [
     {
-      "login": "pierred",
+      "login": "PierreDemailly",
       "name": "PierreD",
-      "avatar_url": "https://avatars.githubusercontent.com/u/1848645?v=4",
-      "profile": "https://github.com/pierred",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39910767?v=4",
+      "profile": "https://github.com/PierreDemailly",
       "contributions": [
-        "code"
+        "code",
+        "test"
       ]
     },
     {
@@ -24,15 +25,6 @@
       "name": "Yefis",
       "avatar_url": "https://avatars.githubusercontent.com/u/39944043?v=4",
       "profile": "https://github.com/SofianD",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "PierreDemailly",
-      "name": "PierreD",
-      "avatar_url": "https://avatars.githubusercontent.com/u/39910767?v=4",
-      "profile": "https://github.com/PierreDemailly",
       "contributions": [
         "code"
       ]
