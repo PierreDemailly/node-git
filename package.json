@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/PierreDemailly/node-git#readme",
   "type": "module",
+  "types": "index.d.ts",
   "devDependencies": {
     "@nodesecure/eslint-config": "^1.4.1",
     "all-contributors-cli": "^6.20.0",
