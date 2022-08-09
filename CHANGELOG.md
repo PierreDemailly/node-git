@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+
+- Added type declarations to be TypeScript friendly.
+
 ## [0.1.1-beta.1] - 2022-08-05
 
 ### Fixed
