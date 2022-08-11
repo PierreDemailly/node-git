@@ -9,7 +9,7 @@ import { getRawLength } from "../helpers/get-raw-length.js";
 /**
  * @see {@link StagedCount}
  */
-export async function stagedCount(message) {
+export async function stagedCount() {
   const rawText = await commander("git diff --cached --numstat");
 
   return getRawLength(rawText);
