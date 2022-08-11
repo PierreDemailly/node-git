@@ -1,4 +1,4 @@
-import { parseCommits } from "../helpers/parse-commits.js";
+import { parseCommits } from "../src/helpers/parse-commits.js";
 
 import tap from "tap";
 

@@ -1,5 +1,5 @@
-import { commander } from "./commander.js";
-import { getRawLength } from "./helpers/get-raw-length.js";
+import { commander } from "../commander.js";
+import { getRawLength } from "../helpers/get-raw-length.js";
 
 /**
  * @typedef {import("./index").stagedCount} StagedCount

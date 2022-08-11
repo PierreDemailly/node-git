@@ -1,10 +1,10 @@
-import { commander } from "./commander.js";
+import { commander } from "../commander.js";
 
 /**
- * @typedef {import("./index").indexAll} IndexAll
- * @typedef {import("./index").indexFileOrDirectory} indexFileOrDirectory
- * @typedef {import("./index").indexFilesOrDirectories} indexFilesOrDirectories
- * @typedef {import("./index").indexAllCurrentDirectory} indexAllCurrentDirectory
+ * @typedef {import("./index").indexAll} IndexAllType
+ * @typedef {import("./index").indexFileOrDirectory} indexFileOrDirectoryType
+ * @typedef {import("./index").indexFilesOrDirectories} indexFilesOrDirectoriesType
+ * @typedef {import("./index").indexAllCurrentDirectory} indexAllCurrentDirectoryType
  */
 
 /**
@@ -21,7 +21,7 @@ async function add(path) {
 }
 
 /**
- * @see {@link indexFileOrDirectory}
+ * @see {@link indexFileOrDirectoryType}
  */
 export async function indexFileOrDirectory(path) {
   if (!path) {
@@ -36,7 +36,7 @@ export async function indexFileOrDirectory(path) {
 }
 
 /**
- * @see {@link indexFilesOrDirectories}
+ * @see {@link indexFilesOrDirectoriesType}
  */
 export async function indexFilesOrDirectories(paths) {
   if (!Array.isArray(paths)) {
@@ -53,7 +53,7 @@ export async function indexFilesOrDirectories(paths) {
 }
 
 /**
- * @see {@link IndexAll}
+ * @see {@link IndexAllType}
  */
 export async function indexAll(options) {
   if (options.omitNewFiles) {
@@ -66,7 +66,7 @@ export async function indexAll(options) {
 }
 
 /**
- * @see {@link indexAllCurrentDirectory}
+ * @see {@link indexAllCurrentDirectoryType}
  */
 export async function indexAllCurrentDirectory(options) {
   if (options.ignoreRemovals) {

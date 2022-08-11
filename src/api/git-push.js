@@ -1,4 +1,4 @@
-import { commander } from "./commander.js";
+import { commander } from "../commander.js";
 
 /**
  * Execute `git push` command.

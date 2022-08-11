@@ -1,4 +1,4 @@
-import { commander } from "./commander.js";
+import { commander } from "../commander.js";
 
 export async function restoreFile(file) {
   if (typeof file !== "string") {
