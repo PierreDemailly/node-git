@@ -6,9 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [0.1.2-beta.1]
+
 ### Added
 
 - Added type declarations to be TypeScript friendly.
+- Added documentation [here](https://pierredemailly.github.io/node-git/modules.html)
 
 ## [0.1.1-beta.1] - 2022-08-05
 

@@ -11,6 +11,10 @@ A simple Git API for Node.js.
 npm i @pierred/node-git
 ```
 
+## Documentation
+
+[Please go here](https://pierredemailly.github.io/node-git/modules.html) for the documentation.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
