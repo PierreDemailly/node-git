@@ -1,4 +1,4 @@
-import { commander } from "./commander.js";
+import { commander } from "../commander.js";
 
 /**
  * Execute `git commit` command with the message `--message` (alias `-m`)

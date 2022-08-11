@@ -1,4 +1,4 @@
-import { getRawLength } from "../helpers/get-raw-length.js";
+import { getRawLength } from "../src/helpers/get-raw-length.js";
 
 import tap from "tap";
 

@@ -1,18 +1,18 @@
-import { changesCount, stagedCount } from "../git-changes.js";
+import { changesCount, stagedCount } from "../src/api/git-changes.js";
 import { unlink, writeFile } from "node:fs/promises";
 
-import { commander } from "../commander.js";
-import { commit } from "../git-commit.js";
-import { indexFileOrDirectory } from "../git-add.js";
-import { logs } from "../git-log.js";
-import { restoreFile } from "../git-restore.js";
+import { commander } from "../src/commander.js";
+import { commit } from "../src/api/git-commit.js";
+import { indexFileOrDirectory } from "../src/api/git-add.js";
+import { logs } from "../src/api/git-log.js";
+import { restoreFile } from "../src/api/git-restore.js";
 
 import tap from "tap";
 
 tap.test("e2e tests", async(t) => {
   const count = await changesCount();
   const sCount = await stagedCount();
-  console.log("scount", sCount);
+
   if (sCount >= 1) {
     throw new Error("Git staging area must be empty before executing the tests");
   }
