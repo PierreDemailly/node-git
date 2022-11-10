@@ -45,18 +45,16 @@ tap.test("e2e tests", async(t) => {
   );
 
   await indexFileOrDirectory("dummy.txt");
-  await commit(["1 Commit message", "2 Commit message"]);
+  await commit(["1st message", "2nd message"]);
 
   const commits = await logs();
 
   tap.equal(commits[0].message.length, 2, "should have 2 commit messages");
-  tap.equal(commits[0].message[0], "1 Commit message", "first message should be the same as the one provided.");
-  tap.equal(commits[0].message[1], "2 Commit message", "second message should be the same as the one provided.");
+  tap.equal(commits[0].message[0], "1st message", "first message should be the same as the one provided.");
+  tap.equal(commits[0].message[1], "2nd message", "second message should be the same as the one provided.");
 
   // revert the commit
   await commander("git reset HEAD~1");
-  // restore the file
-  await restoreFile("dummy.txt");
   // delete the created file
   await unlink("dummy.txt");
 

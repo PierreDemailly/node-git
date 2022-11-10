@@ -1,15 +1,14 @@
 import { exec } from "node:child_process";
+import { promisify } from "node:util";
 
-export function commander(command, options = {}) {
-  return new Promise((resolve) => {
-    exec(command, (_, stdout, stderr) => {
-      let result = stdout || stderr;
+const execAsync = promisify(exec);
 
-      if (options.split && stdout) {
-        result = result.split("\n");
-      }
+export async function commander(command, options = {}) {
+  const { stdout, stderr } = await execAsync(command);
 
-      resolve(result);
-    });
-  });
+  if (stdout && options.split) {
+    return stdout.split("\n");
+  }
+
+  return stdout || stderr;
 }
