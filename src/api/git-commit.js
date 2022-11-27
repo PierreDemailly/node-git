@@ -1,5 +1,7 @@
 import { commander } from "../commander.js";
 
+const kBypassHooks = ["no-verify", "no-checkout"];
+
 /**
  * Execute `git commit` command with the message `--message` (alias `-m`)
  * flag for each given message.
@@ -15,7 +17,7 @@ import { commander } from "../commander.js";
  * given options. Also it could be well to have multiple custom error implementations
  * e.g: NotAGitRepositoryError, NoIndexedFileError, IdentityUnknownError...
  */
-export async function commit(message) {
+export async function commit(message, options) {
   const stringifiedMessages = (Array.isArray(message) ? message : [message]).flatMap((msg) => {
     if (!msg) {
       return [];
@@ -32,8 +34,18 @@ export async function commit(message) {
     throw new Error("No message given");
   }
 
+  let command = `git commit ${stringifiedMessages}`;
+
+  for (const hook of options?.skipHooks) {
+    if (!kBypassHooks.includes(hook)) {
+      throw new Error(`${hook} is not a known hook. Expected ${kBypassHooks}`);
+    }
+
+    command += ` --${hook}`;
+  }
+
   try {
-    await commander(`git commit ${stringifiedMessages}`);
+    await commander(command);
   }
   catch (error) {
     throw error;
