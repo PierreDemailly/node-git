@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## [0.1.2-beta.1]
+# 1.0.0
+
+## What's Changed
+* refacto: promisify child_process.exec by @PierreDemailly in https://github.com/PierreDemailly/node-git/pull/21
+* feat: bypass git hooks by @PierreDemailly in https://github.com/PierreDemailly/node-git/pull/24
+
+## [0.1.2-beta.1] - 2022-08-12
 
 ### Added
 
