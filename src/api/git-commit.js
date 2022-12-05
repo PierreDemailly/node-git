@@ -10,6 +10,8 @@ const kBypassHooks = ["no-verify", "no-checkout"];
  * commit(["hello", "world"]) // exec. git commit -m "hello" -m "world"
  *
  * @param {string|string[]} message
+ * @param {Object} options commit options
+ * @param {boolean} options.skipHooks set true to skip any git hook
  *
  * @todo
  * We may returns the number of indexed files before before the commit.

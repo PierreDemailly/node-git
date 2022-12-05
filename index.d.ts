@@ -68,7 +68,7 @@ export function stagedCount(): Promise<number>;
  * await commit(["My Commit", "My Second Commit"]); // execute `git commit -m "My Commit" -m "My Second Commit"`.
  * ```
  */
-export function commit(message: string | string[]): Promise<void>;
+export function commit(message: string | string[], options: { skipHooks: boolean }): Promise<void>;
 
 /**
  * Add current changes to the git staging area.
