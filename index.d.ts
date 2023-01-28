@@ -77,7 +77,7 @@ export function commit(message: string | string[], options: { skipHooks: boolean
  *
  * @see {@link IndexAllOptions} for existing options.
  */
-export function indexAll(options: IndexAllOptions): Promise<void>;
+export function indexAll(options?: IndexAllOptions): Promise<void>;
 /**
  * Add current changes of the current working directory to the git staging area.
  *

@@ -18,7 +18,12 @@
     "url": "git+https://github.com/PierreDemailly/node-git.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pierre Demailly <pierredemailly.pro@gmail.com>",
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "src"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PierreDemailly/node-git/issues"

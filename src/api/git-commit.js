@@ -38,7 +38,8 @@ export async function commit(message, options) {
 
   let command = `git commit ${stringifiedMessages}`;
 
-  for (const hook of options?.skipHooks) {
+  const hooks = options?.skipHooks ?? [];
+  for (const hook of hooks) {
     if (!kBypassHooks.includes(hook)) {
       throw new Error(`${hook} is not a known hook. Expected ${kBypassHooks}`);
     }
