@@ -131,3 +131,5 @@ dist
 
 # IntelliJ IDEA config directory
 .idea
+
+.release-it.json
