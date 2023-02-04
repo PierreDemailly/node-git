@@ -26,7 +26,7 @@ tap.same(parseCommits(rawCommits), [{
     email: "<39910767+PierreDemailly@users.noreply.github.com>"
   },
   date: "Tue Jul 12 16:30:01 2022 +0200",
-  message: [
+  messages: [
     "feat(git-api): add git push handler (#6)"
   ]
 }, {
@@ -37,7 +37,7 @@ tap.same(parseCommits(rawCommits), [{
     email: "<39910767+PierreDemailly@users.noreply.github.com>"
   },
   date: "Tue Jul 12 14:10:03 2022 +0200",
-  message: [
+  messages: [
     "feat(git-api): add git-commit handler (#5)"
   ]
 }]);

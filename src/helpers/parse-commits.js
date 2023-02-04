@@ -8,48 +8,45 @@
  *   message: string[]
  * }[]} All commits in the log.
  */
-export function parseCommits(text) {
+export function* parseCommits(text) {
   const rawCommits = text.match(/commit.*?(?=\ncommit |$)/gs);
-  const commits = [];
-
   for (const rawCommit of rawCommits) {
-    const commitData = rawCommit.match(
-      /commit (.*?)(?:Merge: (.*?))?Author: (.*?)Date: (.*?)\n(.*?)$/s
-    );
-
-    const [, commit, rawMerged, rawAuthor, date, msg] = commitData.map(
-      (data) => {
-        if (!data) {
-          return null;
-        }
-
-        return data.replace(/^\n|\n+$|\t| + /g, "");
-      }
-    );
-
+    const lines = rawCommit.split("\n");
+    let commit = null;
     let merged = null;
-    if (rawMerged) {
-      const mergedData = rawMerged.split(" ");
+    let author = null;
+    let date = null;
+    const messages = new Set();
 
-      merged = {
-        from: mergedData[0],
-        to: mergedData[1]
-      };
+    for (const line of lines) {
+      const startsWith = line.slice(0, 7);
+      if (startsWith === "commit ") {
+        commit = line.substring(7);
+      }
+      else if (startsWith === "Merge: ") {
+        const mergedData = line.substring(7).split(" ");
+        merged = { from: mergedData[0], to: mergedData[1] };
+      }
+      else if (startsWith === "Author:") {
+        const authorData = line.substring(8).split(" ");
+        author = { name: authorData[0], email: authorData[1] };
+      }
+      else if (startsWith === "Date:  ") {
+        date = line.substring(8);
+      }
+      else {
+        const msg = line.trim();
+        if (msg) {
+          messages.add(msg);
+        }
+      }
     }
-
-    const authorData = rawAuthor.split(" ");
-
-    commits.push({
+    yield ({
       commit,
       merged,
-      author: {
-        name: authorData[0],
-        email: authorData[1]
-      },
+      author,
       date,
-      message: msg.split(/\n\n/)
+      messages: [...messages]
     });
   }
-
-  return commits;
 }
