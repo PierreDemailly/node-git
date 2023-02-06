@@ -8,48 +8,57 @@
  *   message: string[]
  * }[]} All commits in the log.
  */
-export function parseCommits(text) {
+export function* parseCommits(text) {
+  const tab = "    ";
   const rawCommits = text.match(/commit.*?(?=\ncommit |$)/gs);
-  const commits = [];
-
-  for (const rawCommit of rawCommits) {
-    const commitData = rawCommit.match(
-      /commit (.*?)(?:Merge: (.*?))?Author: (.*?)Date: (.*?)\n(.*?)$/s
-    );
-
-    const [, commit, rawMerged, rawAuthor, date, msg] = commitData.map(
-      (data) => {
-        if (!data) {
-          return null;
+  const commits = rawCommits.map(
+    (commit) => commit.split("\n").flatMap(
+      (commitChunk) => {
+        if (!commitChunk) {
+          return [];
         }
 
-        return data.replace(/^\n|\n+$|\t| + /g, "");
+        if (commitChunk !== tab && commitChunk.startsWith(tab)) {
+          return commitChunk.replace(tab, "Message: ");
+        }
+
+        return commitChunk.trim();
       }
-    );
+    )
+  );
 
-    let merged = null;
-    if (rawMerged) {
-      const mergedData = rawMerged.split(" ");
+  for (const commit of commits) {
+    const result = {
+      commit: commit[0].split(" ")[1],
+      message: []
+    };
 
-      merged = {
-        from: mergedData[0],
-        to: mergedData[1]
-      };
+    for (const line of commit.slice(1)) {
+      if (line.startsWith("Merge:")) {
+        const [, from, to] = line.split(" ");
+        result.merge = {
+          from,
+          to
+        };
+      }
+      else if (line.startsWith("Author:")) {
+        const author = line.replace("Author:", "").trim();
+        const [name, email] = author.split(" ");
+        result.author = {
+          name,
+          email: email.slice(1, -1)
+        };
+      }
+      else if (line.startsWith("CommitDate:")) {
+        const date = line.replace("CommitDate:", "").trim();
+        result.date = date;
+      }
+      else if (line.startsWith("Message:")) {
+        const message = line.replace("Message:", "").trim();
+        result.message.push(message);
+      }
     }
 
-    const authorData = rawAuthor.split(" ");
-
-    commits.push({
-      commit,
-      merged,
-      author: {
-        name: authorData[0],
-        email: authorData[1]
-      },
-      date,
-      message: msg.split(/\n\n/)
-    });
+    yield result;
   }
-
-  return commits;
 }
