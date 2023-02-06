@@ -9,44 +9,57 @@
  * }[]} All commits in the log.
  */
 export function* parseCommits(text) {
+  const tab = "    ";
   const rawCommits = text.match(/commit.*?(?=\ncommit |$)/gs);
-  for (const rawCommit of rawCommits) {
-    const lines = rawCommit.split("\n");
-    let commit = null;
-    let merged = null;
-    let author = null;
-    let date = null;
-    const messages = new Set();
-
-    for (const line of lines) {
-      const startsWith = line.slice(0, 7);
-      if (startsWith === "commit ") {
-        commit = line.substring(7);
-      }
-      else if (startsWith === "Merge: ") {
-        const mergedData = line.substring(7).split(" ");
-        merged = { from: mergedData[0], to: mergedData[1] };
-      }
-      else if (startsWith === "Author:") {
-        const authorData = line.substring(8).split(" ");
-        author = { name: authorData[0], email: authorData[1] };
-      }
-      else if (startsWith === "Date:  ") {
-        date = line.substring(8);
-      }
-      else {
-        const msg = line.trim();
-        if (msg) {
-          messages.add(msg);
+  const commits = rawCommits.map(
+    (commit) => commit.split("\n").flatMap(
+      (commitChunk) => {
+        if (!commitChunk) {
+          return [];
         }
+
+        if (commitChunk !== tab && commitChunk.startsWith(tab)) {
+          return commitChunk.replace(tab, "Message: ");
+        }
+
+        return commitChunk.trim();
+      }
+    )
+  );
+
+  for (const commit of commits) {
+    console.log(commit);
+    const result = {
+      commit: commit[0].split(" ")[1],
+      message: []
+    };
+
+    for (const line of commit.slice(1)) {
+      if (line.startsWith("Merge:")) {
+        const [, from, to] = line.split(" ");
+        result.merge = {
+          from,
+          to
+        };
+      }
+      else if (line.startsWith("Author:")) {
+        const author = line.replace("Author:", "").trim();
+        const [name, email] = author.split(" ");
+        result.author = {
+          name,
+          email: email.slice(1, -1)
+        };
+      }
+      else if (line.startsWith("CommitDate:")) {
+        const date = line.replace("CommitDate:", "").trim();
+        result.date = date;
+      }
+      else if (line.startsWith("Message:")) {
+        const message = line.replace("Message:", "").trim();
+        result.message.push(message);
       }
     }
-    yield ({
-      commit,
-      merged,
-      author,
-      date,
-      messages: [...messages]
-    });
+
+    yield result;
   }
 }
