@@ -28,7 +28,6 @@ export function* parseCommits(text) {
   );
 
   for (const commit of commits) {
-    console.log(commit);
     const result = {
       commit: commit[0].split(" ")[1],
       message: []
