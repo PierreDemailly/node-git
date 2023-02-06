@@ -1,6 +1,6 @@
-import { commander } from "../commander.js";
+import { commander } from '../commander.js'
 
-const kBypassHooks = ["no-verify", "no-checkout"];
+const kBypassHooks = ['no-verify', 'no-checkout']
 
 /**
  * Execute `git commit` command with the message `--message` (alias `-m`)
@@ -19,38 +19,33 @@ const kBypassHooks = ["no-verify", "no-checkout"];
  * given options. Also it could be well to have multiple custom error implementations
  * e.g: NotAGitRepositoryError, NoIndexedFileError, IdentityUnknownError...
  */
-export async function commit(message, options) {
+export async function commit (message, options) {
   const stringifiedMessages = (Array.isArray(message) ? message : [message]).flatMap((msg) => {
     if (!msg) {
-      return [];
+      return []
     }
 
-    if (typeof msg === "string") {
-      return `-m "${msg}"`;
+    if (typeof msg === 'string') {
+      return `-m "${msg}"`
     }
 
-    throw new TypeError(`Expected string or string[], got ${typeof msg}`);
-  }).join(" ");
+    throw new TypeError(`Expected string or string[], got ${typeof msg}`)
+  }).join(' ')
 
   if (!stringifiedMessages) {
-    throw new Error("No message given");
+    throw new Error('No message given')
   }
 
-  let command = `git commit ${stringifiedMessages}`;
+  let command = `git commit ${stringifiedMessages}`
 
-  const hooks = options?.skipHooks ?? [];
+  const hooks = options?.skipHooks ?? []
   for (const hook of hooks) {
     if (!kBypassHooks.includes(hook)) {
-      throw new Error(`${hook} is not a known hook. Expected ${kBypassHooks}`);
+      throw new Error(`${hook} is not a known hook. Expected ${kBypassHooks}`)
     }
 
-    command += ` --${hook}`;
+    command += ` --${hook}`
   }
 
-  try {
-    await commander(command);
-  }
-  catch (error) {
-    throw error;
-  }
+  await commander(command)
 }

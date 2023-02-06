@@ -8,57 +8,54 @@
  *   message: string[]
  * }[]} All commits in the log.
  */
-export function* parseCommits(text) {
-  const tab = "    ";
-  const rawCommits = text.match(/commit.*?(?=\ncommit |$)/gs);
+export function * parseCommits (text) {
+  const tab = '    '
+  const rawCommits = text.match(/commit.*?(?=\ncommit |$)/gs)
   const commits = rawCommits.map(
-    (commit) => commit.split("\n").flatMap(
+    (commit) => commit.split('\n').flatMap(
       (commitChunk) => {
         if (!commitChunk) {
-          return [];
+          return []
         }
 
         if (commitChunk !== tab && commitChunk.startsWith(tab)) {
-          return commitChunk.replace(tab, "Message: ");
+          return commitChunk.replace(tab, 'Message: ')
         }
 
-        return commitChunk.trim();
+        return commitChunk.trim()
       }
     )
-  );
+  )
 
   for (const commit of commits) {
     const result = {
-      commit: commit[0].split(" ")[1],
+      commit: commit[0].split(' ')[1],
       message: []
-    };
+    }
 
     for (const line of commit.slice(1)) {
-      if (line.startsWith("Merge:")) {
-        const [, from, to] = line.split(" ");
+      if (line.startsWith('Merge:')) {
+        const [, from, to] = line.split(' ')
         result.merge = {
           from,
           to
-        };
-      }
-      else if (line.startsWith("Author:")) {
-        const author = line.replace("Author:", "").trim();
-        const [name, email] = author.split(" ");
+        }
+      } else if (line.startsWith('Author:')) {
+        const author = line.replace('Author:', '').trim()
+        const [name, email] = author.split(' ')
         result.author = {
           name,
           email: email.slice(1, -1)
-        };
-      }
-      else if (line.startsWith("CommitDate:")) {
-        const date = line.replace("CommitDate:", "").trim();
-        result.date = date;
-      }
-      else if (line.startsWith("Message:")) {
-        const message = line.replace("Message:", "").trim();
-        result.message.push(message);
+        }
+      } else if (line.startsWith('CommitDate:')) {
+        const date = line.replace('CommitDate:', '').trim()
+        result.date = date
+      } else if (line.startsWith('Message:')) {
+        const message = line.replace('Message:', '').trim()
+        result.message.push(message)
       }
     }
 
-    yield result;
+    yield result
   }
 }

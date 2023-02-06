@@ -4,10 +4,10 @@
  * @param {string} rawText
  * @returns
  */
-export function getRawLength(rawText) {
-  if (typeof rawText !== "string") {
-    throw new TypeError(`string param required. ${typeof rawText} given.`);
+export function getRawLength (rawText) {
+  if (typeof rawText !== 'string') {
+    throw new TypeError(`string param required. ${typeof rawText} given.`)
   }
 
-  return rawText.split("\n").length - 1;
+  return rawText.split('\n').length - 1
 }
