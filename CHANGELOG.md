@@ -12,6 +12,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Added docs folder to .gitignore
 - Added standard
 
+## [unreleased] ##
+
+### What's Changed
+
+* chore: added changelog check
+* fix(types): make indexAll options optional
+
 ## [1.0.1] - 2022-12-13
 
 ### What's Changed
