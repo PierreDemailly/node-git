@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Added docs folder to .gitignore
 - Added standard
 
-## [unreleased] ##
+## [Unreleased] ##
 
 ### What's Changed
 
