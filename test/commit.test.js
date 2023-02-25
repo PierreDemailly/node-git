@@ -15,22 +15,16 @@ try {
   tap.equal(error.message, 'No message given')
 }
 
-try {
-  await commit('my awesome commit', { skipHooks: ['zz'] })
-} catch (error) {
-  tap.equal(error.message, 'zz is not a known hook. Expected no-verify,no-checkout')
-}
-
-tap.test('should bypass', async (t) => {
+tap.test('should add "-n" flag', async (t) => {
   const sc = await stagedCount()
   if (sc > 0) {
     throw Error('staged changes would be commited, test canceled')
   }
 
   try {
-    await commit('my awesome commit', { skipHooks: ['no-verify'] })
+    await commit('my awesome commit', { skipHooks: true })
     // it will throw because they are no staged changes.
   } catch (e) {
-    t.equal(e.cmd, 'git commit -m "my awesome commit" --no-verify')
+    t.equal(e.cmd, 'git commit -m "my awesome commit" -n')
   }
 })

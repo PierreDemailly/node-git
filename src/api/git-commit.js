@@ -1,7 +1,5 @@
 import { commander } from '../commander.js'
 
-const kBypassHooks = ['no-verify', 'no-checkout']
-
 /**
  * Execute `git commit` command with the message `--message` (alias `-m`)
  * flag for each given message.
@@ -38,13 +36,8 @@ export async function commit (message, options) {
 
   let command = `git commit ${stringifiedMessages}`
 
-  const hooks = options?.skipHooks ?? []
-  for (const hook of hooks) {
-    if (!kBypassHooks.includes(hook)) {
-      throw new Error(`${hook} is not a known hook. Expected ${kBypassHooks}`)
-    }
-
-    command += ` --${hook}`
+  if (options?.skipHooks) {
+    command += ' -n'
   }
 
   await commander(command)

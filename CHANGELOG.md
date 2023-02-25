@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to Semantic Versioning.
 
+## [Unreleased]
+
+### What's Changed
+
+- `skipHooks` now take a boolean (`commit`)
+- Added docs
+- Update dependencies
+- 
+
 ## [1.0.2] - 2023-02-06
 
 ### What's Changed
