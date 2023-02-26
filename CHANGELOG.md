@@ -6,12 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.4] 2023-02-26
+
 ### What's Changed
 
 - `skipHooks` now take a boolean (`commit`)
 - Added docs
 - Update dependencies
 - Added license
+
+## [1.0.3] - 2023-02-08
+
+### What's Changed
+
+- Make `indexAll` options optional
 
 ## [1.0.2] - 2023-02-06
 
