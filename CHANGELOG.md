@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - `skipHooks` now take a boolean (`commit`)
 - Added docs
 - Update dependencies
+- Added license
 
 ## [1.0.2] - 2023-02-06
 
