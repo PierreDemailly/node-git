@@ -1,6 +1,6 @@
 {
   "name": "@pierred/node-git",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Git API for node.js",
   "main": "./index.js",
   "scripts": {
