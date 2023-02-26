@@ -20,20 +20,134 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
-<a href="#requirement" id="requirement" style="color: inherit; text-decoration: none;">
-  <h2>Requirement</h2>
-</a>
-
-<a href="#gettting-started" id="gettting-started" style="color: inherit; text-decoration: none;">
-  <h2>Gettting started</h2>
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
 </a>
 <pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">i</span><span class="hl-1"> @</span><span class="hl-0">pierred</span><span class="hl-1">/</span><span class="hl-0">node</span><span class="hl-1">-</span><span class="hl-0">git</span>
 </code></pre>
 
-<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-  <h2>Documentation</h2>
+<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+  <h2>API</h2>
 </a>
-<p><a href="https://pierredemailly.github.io/node-git/modules.html">Please go here</a> for the documentation.</p>
+
+<a href="#changescount" id="changescount" style="color: inherit; text-decoration: none;">
+  <h3><code>changesCount()</code></h3>
+</a>
+<p>Get the count of changes.</p>
+<p>It does include changes that have been staged, which haven&#39;t.</p>
+<p>It does not include changes that are untracked.</p>
+<pre><code class="language-ts"><span class="hl-2">changesCount</span><span class="hl-1">(): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-0">number</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#stagedcount" id="stagedcount" style="color: inherit; text-decoration: none;">
+  <h3><code>stagedCount()</code></h3>
+</a>
+<p>Get the count of changes that have been staged.</p>
+<pre><code class="language-ts"><span class="hl-2">stagedCount</span><span class="hl-1">(): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-0">number</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#commitmessage-options" id="commitmessage-options" style="color: inherit; text-decoration: none;">
+  <h3><code>commit(message[, options])</code></h3>
+</a>
+<p>Create a commit given one or multiple commit message(s).</p>
+<pre><code class="language-ts"><span class="hl-2">commit</span><span class="hl-1">(</span><span class="hl-0">message</span><span class="hl-1">: </span><span class="hl-0">string</span><span class="hl-1"> | </span><span class="hl-0">string</span><span class="hl-1">[], </span><span class="hl-0">options</span><span class="hl-1">?: { </span><span class="hl-0">skipHooks:</span><span class="hl-1"> </span><span class="hl-0">boolean</span><span class="hl-1"> }): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+<p>Example usage:</p>
+<pre><code class="language-ts"><span class="hl-5">await</span><span class="hl-1"> </span><span class="hl-2">commit</span><span class="hl-1">(</span><span class="hl-6">&quot;My Commit&quot;</span><span class="hl-1">); </span><span class="hl-7">// execute `git commit -m &quot;My Commit&quot;`.</span><br/><span class="hl-5">await</span><span class="hl-1"> </span><span class="hl-2">commit</span><span class="hl-1">([</span><span class="hl-6">&quot;My Commit&quot;</span><span class="hl-1">, </span><span class="hl-6">&quot;My Second Commit&quot;</span><span class="hl-1">]); </span><span class="hl-7">// execute `git commit -m &quot;My Commit&quot; -m &quot;My Second Commit&quot;`.</span>
+</code></pre>
+
+<a href="#indexalloptions" id="indexalloptions" style="color: inherit; text-decoration: none;">
+  <h3><code>indexAll([options])</code></h3>
+</a>
+<p>Add current changes to the git staging area.</p>
+<pre><code class="language-ts"><span class="hl-2">indexAll</span><span class="hl-1">(</span><span class="hl-0">options</span><span class="hl-1">?: </span><span class="hl-0">IndexAllOptions</span><span class="hl-1">): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#indexallcurrentdirectoryoptions" id="indexallcurrentdirectoryoptions" style="color: inherit; text-decoration: none;">
+  <h3><code>indexAllCurrentDirectory(options)</code></h3>
+</a>
+<p>Add current changes of the current working directory to the git staging area.</p>
+<pre><code class="language-ts"><span class="hl-2">indexAllCurrentDirectory</span><span class="hl-1">(</span><span class="hl-0">options</span><span class="hl-1">: </span><span class="hl-0">indexAllCurrentDirectoryOptions</span><span class="hl-1">): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+<p>This method should not be used with Git V2.x without ignoreRemovals: true, because Git V2.x does include deleted files
+by default. Git V1.x side, it doesn&#39;t support --ignore-removal flag, deleted files are
+omitted as expected behavior.</p>
+
+<a href="#indexfileordirectoryfileordirectory" id="indexfileordirectoryfileordirectory" style="color: inherit; text-decoration: none;">
+  <h3><code>indexFileOrDirectory(fileOrDirectory)</code></h3>
+</a>
+<p>Add standalone file or directory to the git staging area.</p>
+<pre><code class="language-ts"><span class="hl-2">indexFileOrDirectory</span><span class="hl-1">(</span><span class="hl-0">fileOrDirectory</span><span class="hl-1">: </span><span class="hl-0">string</span><span class="hl-1">): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#indexfilesordirectoriesfilesordirectories" id="indexfilesordirectoriesfilesordirectories" style="color: inherit; text-decoration: none;">
+  <h3><code>indexFilesOrDirectories(filesOrDirectories)</code></h3>
+</a>
+<p>Add multiple files or directories to the git staging area.</p>
+<pre><code class="language-ts"><span class="hl-2">indexFilesOrDirectories</span><span class="hl-1">(</span><span class="hl-0">filesOrDirectories</span><span class="hl-1">: </span><span class="hl-0">string</span><span class="hl-1">[]): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#logs" id="logs" style="color: inherit; text-decoration: none;">
+  <h3><code>logs()</code></h3>
+</a>
+<p>Get the list of all commits for the current branch.</p>
+<pre><code class="language-ts"><span class="hl-2">logs</span><span class="hl-1">(): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-0">Commit</span><span class="hl-1">[]&gt;</span>
+</code></pre>
+
+<a href="#push" id="push" style="color: inherit; text-decoration: none;">
+  <h3><code>push()</code></h3>
+</a>
+<p>Push to remote.</p>
+<pre><code class="language-ts"><span class="hl-2">push</span><span class="hl-1">(): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#restorefilefile" id="restorefilefile" style="color: inherit; text-decoration: none;">
+  <h3><code>restoreFile(file)</code></h3>
+</a>
+<p>Remove given file from the git staging area.</p>
+<pre><code class="language-ts"><span class="hl-2">restoreFile</span><span class="hl-1">(</span><span class="hl-0">file</span><span class="hl-1">: </span><span class="hl-0">string</span><span class="hl-1">): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;</span>
+</code></pre>
+
+<a href="#types" id="types" style="color: inherit; text-decoration: none;">
+  <h2>Types</h2>
+</a>
+
+<a href="#indexalloptions-1" id="indexalloptions-1" style="color: inherit; text-decoration: none;">
+  <h3>IndexAllOptions</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-4">interface</span><span class="hl-1"> </span><span class="hl-3">IndexAllOptions</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-0">omitNewFiles</span><span class="hl-1">: </span><span class="hl-3">boolean</span><span class="hl-1">;</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>Whether omit to index new files.
+Setting it to true will execute git add -u.</p>
+
+<a href="#indexallcurrentdirectoryoptions-1" id="indexallcurrentdirectoryoptions-1" style="color: inherit; text-decoration: none;">
+  <h3>indexAllCurrentDirectoryOptions</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-4">interface</span><span class="hl-1"> </span><span class="hl-3">indexAllCurrentDirectoryOptions</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-0">ignoreRemovals</span><span class="hl-1">: </span><span class="hl-3">boolean</span><span class="hl-1">;</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>Whether omit to index deleted files.
+Setting it to true will execute git add . --ignore-removal.</p>
+
+<a href="#commitmergeresult" id="commitmergeresult" style="color: inherit; text-decoration: none;">
+  <h3>CommitMergeResult</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-4">interface</span><span class="hl-1"> </span><span class="hl-3">CommitMergeResult</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-0">from</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">;</span><br/><span class="hl-1">  </span><span class="hl-0">to</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">;</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>Represents the result of a merge commit.</p>
+
+<a href="#commitauthor" id="commitauthor" style="color: inherit; text-decoration: none;">
+  <h3>CommitAuthor</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-4">interface</span><span class="hl-1"> </span><span class="hl-3">CommitAuthor</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-0">name</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">;</span><br/><span class="hl-1">  </span><span class="hl-0">email</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">;</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>Represents a commit author: name &amp; email.</p>
+
+<a href="#commit" id="commit" style="color: inherit; text-decoration: none;">
+  <h3>Commit</h3>
+</a>
+<pre><code class="language-ts"><span class="hl-4">interface</span><span class="hl-1"> </span><span class="hl-3">Commit</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-0">commit</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">merged</span><span class="hl-1">: </span><span class="hl-3">null</span><span class="hl-1"> | </span><span class="hl-3">CommitMergeResult</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">author</span><span class="hl-1">: </span><span class="hl-3">CommitAuthor</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">date</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">message</span><span class="hl-1">: </span><span class="hl-3">string</span><span class="hl-1">[]</span><br/><span class="hl-1">}</span>
+</code></pre>
+<p>Represent a commit.</p>
 
 <a href="#contributors-✨" id="contributors-✨" style="color: inherit; text-decoration: none;">
   <h2>Contributors ✨</h2>
