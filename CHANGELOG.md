@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.1.0] - 2023-03-21
+
 ### Added
 
 - Added function `currentBranch()` to the API to get the current branch name.
