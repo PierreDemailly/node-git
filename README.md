@@ -94,6 +94,13 @@ Remove given file from the git staging area.
 restoreFile(file: string): Promise<void>
 ```
 
+### `currentBranch()`
+Retrieve current branch name.
+
+```ts
+currentBranch(): Promise<string>
+```
+
 ## Types
 
 ### IndexAllOptions
