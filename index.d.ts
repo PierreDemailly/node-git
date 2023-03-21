@@ -108,3 +108,7 @@ export function push(): Promise<void>;
  * Remove given file from the git staging area.
  */
 export function restoreFile(file: string): Promise<void>;
+/**
+ * Get the current branch name
+ */
+export function currentBranch(): Promise<string>;
