@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Fixed
+
+- `currentBranch()` doesn't include EOL anymore
+
 ## [1.1.0] - 2023-03-21
 
 ### Added
