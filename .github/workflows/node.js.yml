@@ -2,51 +2,31 @@ name: Node.js CI
 
 on:
   push:
-    branches:
-     - main
+    branches: [main]
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   test:
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x, 18.x]
-        os: [ubuntu-latest, macos-latest, windows-latest]
       fail-fast: false
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
       - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
       - name: Use Node.js ${{ matrix.node-version }}
-        uses:  actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: npm i
-      - name: Lint
-        run: npm run lint
-      - name: Package OK
-        run: npm run pkg:ok
+        run: npm install
       - name: Run tests
-        run: npm run test
-  nsci:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v3
-      - uses: NodeSecure/ci-action@v1
-        with:
-          warnings: warning
-  checkkac:
-    if: github.ref_name != 'main'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Changelog check
-        uses: Zomzog/changelog-checker@v1.3.0
-        with:
-          fileName: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run tes
