@@ -1,30 +1,64 @@
-import { commit } from '../src/api/git-commit.js'
-import { stagedCount } from '../src/api/git-changes.js'
-
+import dns from 'node:dns/promises'
 import tap from 'tap'
 
-try {
-  await commit(13.4)
-} catch (error) {
-  tap.equal(error.message, 'Expected string or string[], got number')
-}
+async function resolveMxWithResolver (domain) {
+  const resolver = new dns.Resolver({
+    timeout: 1000,
+    tries: 1
+  })
 
-try {
-  await commit()
-} catch (error) {
-  tap.equal(error.message, 'No message given')
-}
+  const mxRecords = await resolver.resolveMx(domain)
+    .catch((err) => new Error(
+      err.code === 'ENOTFOUND'
+        ? 'Domain not found'
+        : err.message))
 
-tap.test('should add "-n" flag', async (t) => {
-  const sc = await stagedCount()
-  if (sc > 0) {
-    throw Error('staged changes would be commited, test canceled')
+  if (mxRecords instanceof Error) {
+    return {
+      error: mxRecords.message,
+      context: mxRecords
+    }
   }
 
-  try {
-    await commit('my awesome commit', { skipHooks: true })
-    // it will throw because they are no staged changes.
-  } catch (e) {
-    t.equal(e.cmd, 'git commit -m "my awesome commit" -n')
+  return mxRecords.map(({ exchange }) => exchange)
+}
+
+async function resolveMxWithoutResolver (domain) {
+  const mxRecords = await dns.resolveMx(domain)
+    .catch((err) => new Error(
+      err.code === 'ENOTFOUND'
+        ? 'Domain not found'
+        : err.message))
+
+  if (mxRecords instanceof Error) {
+    return {
+      error: mxRecords.message,
+      context: mxRecords
+    }
   }
+
+  return mxRecords.map(({ exchange }) => exchange)
+}
+
+tap.test('resolveMxWithResolver', async (t) => {
+  t.plan(2)
+
+  const mxRecords = await resolveMxWithResolver('google.com')
+
+  t.ok(Array.isArray(mxRecords), 'should return an array')
+  t.ok(mxRecords.length > 0, 'should have at least one record')
+})
+
+tap.test('resolveMxWithResolver wrong domain', async (t) => {
+  const mxRecords = await resolveMxWithResolver('aaa')
+
+  t.equal(mxRecords.error, 'queryMx ENODATA aaa')
+})
+
+tap.test('resolveMxWithoutResolver wrong domain', async (t) => {
+  t.plan(1)
+
+  const mxRecords = await resolveMxWithoutResolver('aaa')
+
+  t.equal(mxRecords.error, 'queryMx ENODATA aaa')
 })
