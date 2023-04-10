@@ -40,7 +40,7 @@ jobs:
         with:
           warnings: warning
   checkkac:
-    if: github.ref_name != 'main' || github.actor != 'dependabot[bot]'
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
