@@ -1,8 +1,8 @@
 > Simple Git API for Node.js (ESM).
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=for-the-badge)](#contributors-)
+[![npm version](https://img.shields.io/npm/v/@pierred/node-git.svg?style=for-the-badge)](https://npmjs.com/package/@pierred/node-git)
+[![last commit](https://img.shields.io/github/last-commit/pierredemailly/node-git.svg?style=for-the-badge)](https://github.com/PierreDemailly/node-git/commits/main)
 
 ## Installation
 
