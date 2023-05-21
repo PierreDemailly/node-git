@@ -38,12 +38,12 @@
   "devDependencies": {
     "@nodesecure/eslint-config": "^1.7.0",
     "@release-it/keep-a-changelog": "^3.1.0",
-    "all-contributors-cli": "^6.24.0",
+    "all-contributors-cli": "^6.25.1",
     "c8": "^7.13.0",
     "pkg-ok": "^3.0.0",
     "snazzy": "^9.0.0",
     "standard": "^17.0.0",
     "tap": "^16.3.4",
-    "typedoc": "^0.24.1"
+    "typedoc": "^0.24.7"
   }
 }
