@@ -167,10 +167,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/PierreDemailly"><img src="https://avatars.githubusercontent.com/u/39910767?v=4?s=80" width="80px;" alt=""/><br /><sub><b>PierreD</b></sub></a><br /><a href="https://github.com/PierreDemailly/node-git/commits?author=PierreDemailly" title="Code">💻</a> <a href="https://github.com/PierreDemailly/node-git/commits?author=PierreDemailly" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/SofianD"><img src="https://avatars.githubusercontent.com/u/39944043?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Yefis</b></sub></a><br /><a href="https://github.com/PierreDemailly/node-git/commits?author=SofianD" title="Code">💻</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/PierreDemailly"><img src="https://avatars.githubusercontent.com/u/39910767?v=4?s=80" width="80px;" alt="PierreD"/><br /><sub><b>PierreD</b></sub></a><br /><a href="https://github.com/PierreDemailly/node-git/commits?author=PierreDemailly" title="Code">💻</a> <a href="https://github.com/PierreDemailly/node-git/commits?author=PierreDemailly" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SofianD"><img src="https://avatars.githubusercontent.com/u/39944043?v=4?s=80" width="80px;" alt="Yefis"/><br /><sub><b>Yefis</b></sub></a><br /><a href="https://github.com/PierreDemailly/node-git/commits?author=SofianD" title="Code">💻</a> <a href="https://github.com/PierreDemailly/node-git/pulls?q=is%3Apr+reviewed-by%3ASofianD" title="Reviewed Pull Requests">👀</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
