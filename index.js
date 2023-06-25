@@ -5,6 +5,7 @@ import { logs } from './src/api/git-log.js'
 import { push } from './src/api/git-push.js'
 import { restoreFile } from './src/api/git-restore.js'
 import { currentBranch } from './src/api/git-current-branch.js'
+import { init } from './src/api/git-init.js'
 
 export {
   changesCount,
@@ -17,5 +18,6 @@ export {
   push,
   stagedCount,
   restoreFile,
-  currentBranch
+  currentBranch,
+  init
 }

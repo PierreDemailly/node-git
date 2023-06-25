@@ -101,6 +101,14 @@ Retrieve current branch name.
 currentBranch(): Promise<string>
 ```
 
+### `init()`
+Initialize a git repository.
+If git is already initialized, it will prompt for a confirmation.
+
+```ts
+init(): Promise<void>;
+```
+
 ## Types
 
 ### IndexAllOptions

@@ -112,3 +112,8 @@ export function restoreFile(file: string): Promise<void>;
  * Get the current branch name
  */
 export function currentBranch(): Promise<string>;
+/**
+ * Initialize a git repository.
+ * If git is already initialized, it will prompt for a confirmation.
+ */
+export function init(): Promise<void>;
