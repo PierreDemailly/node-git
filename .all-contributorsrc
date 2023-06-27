@@ -32,5 +32,12 @@
     }
   ],
   "contributorsPerLine": 7,
+  "projectName": "node-git",
+  "projectOwner": "PierreDemailly",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "angular",
+  "imageSize": 80,
   "commitType": "docs"
 }
