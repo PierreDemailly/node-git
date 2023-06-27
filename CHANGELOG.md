@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.2.0] - 2023-06-27
+
 ### Added
 
 - Added function `init()` to the API to initialize a Git. This function prompt for confirmation if git is already initialized.
