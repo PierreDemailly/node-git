@@ -38,5 +38,6 @@
   "repoHost": "https://github.com",
   "skipCi": true,
   "commitConvention": "angular",
+  "imageSize": 80,
   "commitType": "docs"
 }
