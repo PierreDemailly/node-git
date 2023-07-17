@@ -37,7 +37,7 @@
   "types": "index.d.ts",
   "devDependencies": {
     "@nodesecure/eslint-config": "^1.7.0",
-    "@release-it/keep-a-changelog": "^3.1.0",
+    "@release-it/keep-a-changelog": "^4.0.0",
     "all-contributors-cli": "^6.26.0",
     "c8": "^8.0.0",
     "pkg-ok": "^3.0.0",
