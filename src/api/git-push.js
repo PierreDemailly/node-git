@@ -1,4 +1,4 @@
-import { commander } from '../commander.js'
+import { commander } from "../commander.js";
 
 /**
  * Execute `git push` command.
@@ -7,6 +7,6 @@ import { commander } from '../commander.js'
  * Add options/params/handler for set the upstream / remote.
  * Also we can protect the user from pushing to a non-existing remote.
  */
-export async function push () {
-  await commander('git push')
+export async function push() {
+  await commander("git push");
 }

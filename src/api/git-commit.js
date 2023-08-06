@@ -1,4 +1,4 @@
-import { commander } from '../commander.js'
+import { commander } from "../commander.js";
 
 /**
  * Execute `git commit` command with the message `--message` (alias `-m`)
@@ -17,28 +17,28 @@ import { commander } from '../commander.js'
  * given options. Also it could be well to have multiple custom error implementations
  * e.g: NotAGitRepositoryError, NoIndexedFileError, IdentityUnknownError...
  */
-export async function commit (message, options) {
+export async function commit(message, options) {
   const stringifiedMessages = (Array.isArray(message) ? message : [message]).flatMap((msg) => {
     if (!msg) {
-      return []
+      return [];
     }
 
-    if (typeof msg === 'string') {
-      return `-m "${msg}"`
+    if (typeof msg === "string") {
+      return `-m "${msg}"`;
     }
 
-    throw new TypeError(`Expected string or string[], got ${typeof msg}`)
-  }).join(' ')
+    throw new TypeError(`Expected string or string[], got ${typeof msg}`);
+  }).join(" ");
 
   if (!stringifiedMessages) {
-    throw new Error('No message given')
+    throw new Error("No message given");
   }
 
-  let command = `git commit ${stringifiedMessages}`
+  let command = `git commit ${stringifiedMessages}`;
 
   if (options?.skipHooks) {
-    command += ' -n'
+    command += " -n";
   }
 
-  await commander(command)
+  await commander(command);
 }

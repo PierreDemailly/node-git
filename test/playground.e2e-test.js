@@ -1,62 +1,62 @@
-import { changesCount, stagedCount } from '../src/api/git-changes.js'
-import { unlink, writeFile } from 'node:fs/promises'
+import { changesCount, stagedCount } from "../src/api/git-changes.js";
+import { unlink, writeFile } from "node:fs/promises";
 
-import { commander } from '../src/commander.js'
-import { commit } from '../src/api/git-commit.js'
-import { indexFileOrDirectory } from '../src/api/git-add.js'
-import { logs } from '../src/api/git-log.js'
-import { restoreFile } from '../src/api/git-restore.js'
+import { commander } from "../src/commander.js";
+import { commit } from "../src/api/git-commit.js";
+import { indexFileOrDirectory } from "../src/api/git-add.js";
+import { logs } from "../src/api/git-log.js";
+import { restoreFile } from "../src/api/git-restore.js";
 
-import tap from 'tap'
+import tap from "tap";
 
-tap.test('e2e tests', async (t) => {
-  const count = await changesCount()
-  const sCount = await stagedCount()
+tap.test("e2e tests", async(t) => {
+  const count = await changesCount();
+  const sCount = await stagedCount();
 
   if (sCount >= 1) {
-    throw new Error('Git staging area must be empty before executing the tests')
+    throw new Error("Git staging area must be empty before executing the tests");
   }
 
-  await writeFile('dummy.txt', 'utf-8')
+  await writeFile("dummy.txt", "utf-8");
 
-  const countAfterNewFile = await changesCount()
-  const sCountAfterNewFile = await stagedCount()
+  const countAfterNewFile = await changesCount();
+  const sCountAfterNewFile = await stagedCount();
 
-  t.equal(countAfterNewFile, count + 1, 'after creating a file, `changesCount` should be incremented by 1.')
+  t.equal(countAfterNewFile, count + 1, "after creating a file, `changesCount` should be incremented by 1.");
   t.equal(
     sCountAfterNewFile,
     sCount,
-    'after creating a file `stagedCount` should be the same because the file is not yet staged.')
+    "after creating a file `stagedCount` should be the same because the file is not yet staged.");
 
-  await indexFileOrDirectory('dummy.txt')
+  await indexFileOrDirectory("dummy.txt");
 
-  const sCountAfterIndexedFile = await stagedCount()
+  const sCountAfterIndexedFile = await stagedCount();
 
-  t.equal(sCountAfterIndexedFile, sCount + 1, 'after indexing a file, `stagedCount` should be incremented by 1.')
+  t.equal(sCountAfterIndexedFile, sCount + 1, "after indexing a file, `stagedCount` should be incremented by 1.");
 
-  await restoreFile('dummy.txt')
+  await restoreFile("dummy.txt");
 
-  const sCountAfterRestoredFile = await stagedCount()
+  const sCountAfterRestoredFile = await stagedCount();
 
   t.equal(
     sCountAfterRestoredFile,
     sCountAfterIndexedFile - 1,
-    'after restoring the file, `stageCount` should be decremented by 1.'
-  )
+    "after restoring the file, `stageCount` should be decremented by 1."
+  );
 
-  await indexFileOrDirectory('dummy.txt')
-  await commit(['1st message', '2nd message'])
+  await indexFileOrDirectory("dummy.txt");
+  await commit(["1st message", "2nd message"]);
 
-  const commits = await logs()
+  const commits = await logs();
 
-  tap.equal(commits[0].message.length, 2, 'should have 2 commit messages')
-  tap.equal(commits[0].message[0], '1st message', 'first message should be the same as the one provided.')
-  tap.equal(commits[0].message[1], '2nd message', 'second message should be the same as the one provided.')
+  tap.equal(commits[0].message.length, 2, "should have 2 commit messages");
+  tap.equal(commits[0].message[0], "1st message", "first message should be the same as the one provided.");
+  tap.equal(commits[0].message[1], "2nd message", "second message should be the same as the one provided.");
 
   // revert the commit
-  await commander('git reset HEAD~1')
+  await commander("git reset HEAD~1");
   // delete the created file
-  await unlink('dummy.txt')
+  await unlink("dummy.txt");
 
-  tap.end()
-})
+  tap.end();
+});

@@ -1,7 +1,7 @@
-import { commander } from '../commander.js'
+import { commander } from "../commander.js";
 
-export async function currentBranch () {
-  const rawText = await commander('git rev-parse --abbrev-ref HEAD')
+export async function currentBranch() {
+  const rawText = await commander("git rev-parse --abbrev-ref HEAD");
 
-  return rawText.replace('\n', '')
+  return rawText.replace("\n", "");
 }
