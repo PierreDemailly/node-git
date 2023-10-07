@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Changed
+- Updated repository: migrated from `tap` to `test_runner`, updated deps & GA, docs, ci, imports
+- Cleaned up TODOs
+
 ## [1.2.0] - 2023-06-27
 
 ### Added
