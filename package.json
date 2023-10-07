@@ -36,14 +36,14 @@
   "type": "module",
   "types": "index.d.ts",
   "devDependencies": {
-    "@nodesecure/eslint-config": "^1.7.1",
+    "@nodesecure/eslint-config": "^1.8.0",
     "@release-it/keep-a-changelog": "^4.0.0",
     "c8": "^8.0.1",
     "glob": "^10.3.10",
     "pkg-ok": "^3.0.0",
-    "typedoc": "^0.24.8"
+    "typedoc": "^0.25.1"
   },
   "dependencies": {
-    "@topcli/prompts": "^1.2.0"
+    "@topcli/prompts": "^1.4.0"
   }
 }
