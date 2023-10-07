@@ -1,6 +1,10 @@
 // Import Node.js Dependencies
 import { test } from "node:test";
 import assert from "node:assert";
+import { execSync } from "node:child_process";
+
+// Import Third-party Dependencies
+import isCI from "is-ci";
 
 // Import Internal Dependencies
 import { commit } from "../src/api/git-commit.js";
@@ -26,6 +30,10 @@ test("should add \"-n\" flag", async() => {
     throw Error("staged changes would be commited, test canceled");
   }
 
+  if (isCI) {
+    execSync("git config user.email \"foo@bar.com\"");
+    execSync("git config user.name \"Foo\"");
+  }
   await assert.rejects(async() => {
     // it will throw because there is no staged changes.
     await commit("my awesome commit", { skipHooks: true });

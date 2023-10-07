@@ -2,6 +2,10 @@
 import fs from "node:fs";
 import { test } from "node:test";
 import assert from "node:assert";
+import { execSync } from "node:child_process";
+
+// Import Third-party Dependencies
+import isCI from "is-ci";
 
 // Import Internal Dependencies
 import { changesCount, stagedCount } from "../src/api/git-changes.js";
@@ -12,6 +16,11 @@ import { logs } from "../src/api/git-log.js";
 import { restoreFile } from "../src/api/git-restore.js";
 
 test("e2e tests", async() => {
+  if (isCI) {
+    execSync("git config user.email \"foo@bar.com\"");
+    execSync("git config user.name \"Foo\"");
+  }
+
   const count = await changesCount();
   const sCount = await stagedCount();
 
