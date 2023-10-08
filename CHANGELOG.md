@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### Added
+
+- Added function `currentAuthor()` to the API to retrieve current author based on git configuration.
+
 ### Changed
 - Updated repository: migrated from `tap` to `test_runner`, updated deps & GA, docs, ci, imports
 - Cleaned up TODOs

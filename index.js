@@ -7,6 +7,7 @@ import { push } from "./src/api/git-push.js";
 import { restoreFile } from "./src/api/git-restore.js";
 import { currentBranch } from "./src/api/git-current-branch.js";
 import { init } from "./src/api/git-init.js";
+import { currentAuthor } from "./src/api/git-author.js";
 
 export {
   changesCount,
@@ -20,5 +21,6 @@ export {
   stagedCount,
   restoreFile,
   currentBranch,
-  init
+  init,
+  currentAuthor
 };
