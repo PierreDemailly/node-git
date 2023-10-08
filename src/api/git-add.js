@@ -1,11 +1,5 @@
+// Import Internal Dependencies
 import { commander } from "../commander.js";
-
-/**
- * @typedef {import("./index").indexAll} IndexAllType
- * @typedef {import("./index").indexFileOrDirectory} indexFileOrDirectoryType
- * @typedef {import("./index").indexFilesOrDirectories} indexFilesOrDirectoriesType
- * @typedef {import("./index").indexAllCurrentDirectory} indexAllCurrentDirectoryType
- */
 
 /**
  * Execute `git add` command.
@@ -15,9 +9,6 @@ async function add(path) {
   await commander(`git add ${path}`);
 }
 
-/**
- * @see {@link indexFileOrDirectoryType}
- */
 export async function indexFileOrDirectory(path) {
   if (!path) {
     throw Error("Please provide a file or a directory to index.");
@@ -30,9 +21,6 @@ export async function indexFileOrDirectory(path) {
   await add(path);
 }
 
-/**
- * @see {@link indexFilesOrDirectoriesType}
- */
 export async function indexFilesOrDirectories(paths) {
   if (!Array.isArray(paths)) {
     throw TypeError(`Expected array, got ${typeof paths}.`);
@@ -47,9 +35,6 @@ export async function indexFilesOrDirectories(paths) {
   }
 }
 
-/**
- * @see {@link IndexAllType}
- */
 export async function indexAll(options) {
   if (options.omitNewFiles) {
     await add("-u");
@@ -60,9 +45,6 @@ export async function indexAll(options) {
   await add("--all");
 }
 
-/**
- * @see {@link indexAllCurrentDirectoryType}
- */
 export async function indexAllCurrentDirectory(options) {
   if (options.ignoreRemovals) {
     await add(". --ignore-removal");

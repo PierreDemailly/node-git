@@ -4,9 +4,9 @@
   "description": "Git API for node.js",
   "main": "./index.js",
   "scripts": {
-    "test": "tap --no-coverage ./test/**.test.js",
+    "test": "node --test ./test",
     "test:c8": "c8 npm run test",
-    "test:e2e": "tap --no-coverage ./test/**.e2e-test.js",
+    "test:e2e": "glob -c \"node --test\" \"./test/**.e2e-test.js\"",
     "test:e2e:c8": "c8 npm run test:e2e",
     "test:all": "npm run test && npm run test:e2e",
     "test:all:c8": "c8 npm run test:all",
@@ -22,7 +22,7 @@
     "git",
     "api"
   ],
-  "author": "Pierre Demailly <pierredemailly.pro@gmail.com>",
+  "author": "PierreDemailly <pierredemailly.pro@gmail.com>",
   "files": [
     "index.d.ts",
     "index.js",
@@ -36,15 +36,15 @@
   "type": "module",
   "types": "index.d.ts",
   "devDependencies": {
-    "@nodesecure/eslint-config": "^1.7.1",
+    "@nodesecure/eslint-config": "^1.8.0",
     "@release-it/keep-a-changelog": "^4.0.0",
-    "all-contributors-cli": "^6.26.1",
     "c8": "^8.0.1",
+    "glob": "^10.3.10",
+    "is-ci": "^3.0.1",
     "pkg-ok": "^3.0.0",
-    "tap": "^16.3.8",
-    "typedoc": "^0.24.8"
+    "typedoc": "^0.25.1"
   },
   "dependencies": {
-    "@topcli/prompts": "^1.2.0"
+    "@topcli/prompts": "^1.4.0"
   }
 }
