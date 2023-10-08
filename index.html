@@ -65,6 +65,9 @@ omitted as expected behavior.</p>
 If git is already initialized, it will prompt for a confirmation.</p>
 <pre><code class="language-ts"><span class="hl-2">init</span><span class="hl-1">(): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-4">void</span><span class="hl-1">&gt;;</span>
 </code><button>Copy</button></pre>
+<a id="md:currentauthor" class="tsd-anchor"></a><h3><a href="#md:currentauthor"><code>currentAuthor()</code></a></h3><p>Get the current author to the format <code>name &lt;email&gt;</code> (based on Git configuration).</p>
+<pre><code class="language-ts"><span class="hl-2">currentAuthor</span><span class="hl-1">(): </span><span class="hl-3">Promise</span><span class="hl-1">&lt;</span><span class="hl-0">string</span><span class="hl-1">&gt;;</span>
+</code><button>Copy</button></pre>
 <a id="md:types" class="tsd-anchor"></a><h2><a href="#md:types">Types</a></h2><a id="md:indexalloptions-1" class="tsd-anchor"></a><h3><a href="#md:indexalloptions-1">IndexAllOptions</a></h3><pre><code class="language-ts"><span class="hl-4">interface</span><span class="hl-1"> </span><span class="hl-3">IndexAllOptions</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-0">omitNewFiles</span><span class="hl-1">: </span><span class="hl-3">boolean</span><span class="hl-1">;</span><br/><span class="hl-1">}</span>
 </code><button>Copy</button></pre>
 <p>Whether omit to index new files.
@@ -140,7 +143,8 @@ Setting it to true will execute git add . --ignore-removal.</p>
 <li><a href="#md:push"><span>push()</span></a></li>
 <li><a href="#md:restorefilefile"><span>restore<wbr/>File(file)</span></a></li>
 <li><a href="#md:currentbranch"><span>current<wbr/>Branch()</span></a></li>
-<li><a href="#md:init"><span>init()</span></a></li></ul></li>
+<li><a href="#md:init"><span>init()</span></a></li>
+<li><a href="#md:currentauthor"><span>current<wbr/>Author()</span></a></li></ul></li>
 <li><a href="#md:types"><span>Types</span></a></li>
 <li>
 <ul>
@@ -160,6 +164,7 @@ Setting it to true will execute git add . --ignore-removal.</p>
 <li><a href="interfaces/indexAllCurrentDirectoryOptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg>indexAllCurrentDirectoryOptions</a></li>
 <li><a href="functions/changesCount.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>changesCount</a></li>
 <li><a href="functions/commit-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>commit</a></li>
+<li><a href="functions/currentAuthor.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>currentAuthor</a></li>
 <li><a href="functions/currentBranch.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>currentBranch</a></li>
 <li><a href="functions/indexAll.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>indexAll</a></li>
 <li><a href="functions/indexAllCurrentDirectory.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg>indexAllCurrentDirectory</a></li>
