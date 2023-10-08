@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.3.0] - 2023-10-08
+
 ### Added
 
 - Added function `currentAuthor()` to the API to retrieve current author based on git configuration.
