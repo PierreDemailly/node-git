@@ -117,3 +117,7 @@ export function currentBranch(): Promise<string>;
  * If git is already initialized, it will prompt for a confirmation.
  */
 export function init(): Promise<void>;
+/**
+ * Get the current author to the format `name <email>` (based on Git configuration).
+ */
+export function currentAuthor(): Promise<string>;

@@ -109,6 +109,13 @@ If git is already initialized, it will prompt for a confirmation.
 init(): Promise<void>;
 ```
 
+### `currentAuthor()`
+Get the current author to the format `name <email>` (based on Git configuration).
+
+```ts
+currentAuthor(): Promise<string>;
+```
+
 ## Types
 
 ### IndexAllOptions
