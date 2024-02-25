@@ -44,7 +44,7 @@ await commit("My Commit"); // execute `git commit -m "My Commit"`.
 await commit(["My Commit", "My Second Commit"]); // execute `git commit -m "My Commit" -m "My Second Commit"`.
 ```
 
-### `indexAll([options])`
+### `indexAll(options)`
 Add current changes to the git staging area.
 
 ```ts
@@ -54,7 +54,7 @@ indexAll(options?: IndexAllOptions): Promise<void>
 Add current changes of the current working directory to the git staging area.
 
 ```ts
-indexAllCurrentDirectory(options: indexAllCurrentDirectoryOptions): Promise<void>
+indexAllCurrentDirectory(options?: indexAllCurrentDirectoryOptions): Promise<void>
 ```
 This method should not be used with Git V2.x without ignoreRemovals: true, because Git V2.x does include deleted files
 by default. Git V1.x side, it doesn't support --ignore-removal flag, deleted files are

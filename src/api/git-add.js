@@ -35,7 +35,7 @@ export async function indexFilesOrDirectories(paths) {
   }
 }
 
-export async function indexAll(options) {
+export async function indexAll(options = {}) {
   if (options.omitNewFiles) {
     await add("-u");
 
@@ -45,7 +45,7 @@ export async function indexAll(options) {
   await add("--all");
 }
 
-export async function indexAllCurrentDirectory(options) {
+export async function indexAllCurrentDirectory(options = {}) {
   if (options.ignoreRemovals) {
     await add(". --ignore-removal");
 
