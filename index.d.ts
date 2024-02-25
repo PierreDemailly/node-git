@@ -87,7 +87,7 @@ export function indexAll(options?: IndexAllOptions): Promise<void>;
  *
  * @see {@link indexAllCurrentDirectoryOptions} for existing options.
  */
-export function indexAllCurrentDirectory(options: indexAllCurrentDirectoryOptions): Promise<void>;
+export function indexAllCurrentDirectory(options?: indexAllCurrentDirectoryOptions): Promise<void>;
 /**
  * Add standalone file or directory to the git staging area.
  */
